@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cl2s8x46y0fc8"]
+[gd_scene load_steps=12 format=3 uid="uid://cl2s8x46y0fc8"]
 
 [ext_resource type="Texture2D" uid="uid://c6v1orrjl3k81" path="res://assets/031love0.png" id="1_pdimh"]
 [ext_resource type="Texture2D" uid="uid://wc6x33odmbte" path="res://assets/Screenshot 2024-11-04 192338.png" id="1_tyoxi"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_xyr1c"]
 [ext_resource type="PackedScene" uid="uid://df8easph2orqv" path="res://scenes/player.tscn" id="3_5cspa"]
 [ext_resource type="PackedScene" uid="uid://bmviv4gdtn3k6" path="res://scenes/apple.tscn" id="5_yh37j"]
+[ext_resource type="PackedScene" uid="uid://c4h0mj175lqt" path="res://scenes/tiny_apple.tscn" id="6_h0tj7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u8cre"]
 texture = ExtResource("1_tyoxi")
@@ -191,23 +192,38 @@ layer_0/tile_data = PackedInt32Array(-196613, 262144, 2, -131077, 262144, 2, -65
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_5cspa")]
+[node name="chicken" parent="." instance=ExtResource("3_5cspa")]
+unique_name_in_owner = true
 position = Vector2(-1, 35)
 script = ExtResource("2_xyr1c")
 
-[node name="Timer" type="Timer" parent="CharacterBody2D"]
+[node name="Timer" type="Timer" parent="chicken"]
 wait_time = 2.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(1, 9)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-2, -16)
+[node name="LeftWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-7, -16)
 shape = SubResource("WorldBoundaryShape2D_ukv2u")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="RightWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(17, 0)
 shape = SubResource("WorldBoundaryShape2D_tg11i")
 
-[node name="Sprite2D" parent="." instance=ExtResource("5_yh37j")]
-position = Vector2(-124, -81)
+[node name="apple_icon" parent="." instance=ExtResource("5_yh37j")]
+offset_left = -124.0
+offset_top = -81.0
+offset_right = -107.0
+offset_bottom = -65.0
 scale = Vector2(1.79412, 1.8125)
+
+[node name="tiny_apple" parent="." instance=ExtResource("6_h0tj7")]
+unique_name_in_owner = true
+position = Vector2(71, 46)
+scale = Vector2(0.5, 0.5)
+
+[connection signal="pressed" from="apple_icon" to="chicken" method="_on_apple_icon_pressed"]
+[connection signal="pressed" from="apple_icon" to="tiny_apple" method="_on_apple_icon_pressed"]
+[connection signal="apple_created" from="tiny_apple" to="chicken" method="_on_tiny_apple_apple_created"]
+[connection signal="apple_eaten" from="tiny_apple" to="chicken" method="_on_tiny_apple_apple_eaten"]

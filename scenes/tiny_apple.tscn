@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4h0mj175lqt"]
+
+[ext_resource type="Texture2D" uid="uid://h8m1fbfbg5kl" path="res://assets/apple.png" id="1_eu240"]
+[ext_resource type="Script" path="res://scripts/tiny_apple.gd" id="2_4s301"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ov706"]
+size = Vector2(18, 18)
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_eu240")
+script = ExtResource("2_4s301")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ov706")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

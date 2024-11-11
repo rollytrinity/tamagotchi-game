@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmviv4gdtn3k6"]
+[gd_scene load_steps=2 format=3 uid="uid://bmviv4gdtn3k6"]
 
 [ext_resource type="Texture2D" uid="uid://h8m1fbfbg5kl" path="res://assets/apple.png" id="1_ads68"]
-[ext_resource type="Script" path="res://scripts/apple.gd" id="2_suop1"]
 
-[node name="Sprite2D" type="Sprite2D"]
-texture = ExtResource("1_ads68")
-script = ExtResource("2_suop1")
+[node name="TextureButton" type="TextureButton"]
+offset_left = -9.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+texture_normal = ExtResource("1_ads68")

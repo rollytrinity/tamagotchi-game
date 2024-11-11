@@ -1,9 +1,41 @@
-[gd_scene load_steps=19 format=3 uid="uid://df8easph2orqv"]
+[gd_scene load_steps=27 format=3 uid="uid://df8easph2orqv"]
 
 [ext_resource type="Texture2D" uid="uid://dmu4aidegycj0" path="res://assets/Chicken_Sprite_Sheet_Light_Brown.png" id="1_70u1i"]
 [ext_resource type="Texture2D" uid="uid://c88lie6p0v3xk" path="res://assets/Chicken_Sprite_Sheet_Light_Brown_mirrored.png" id="2_s3gs4"]
 
 [sub_resource type="GDScript" id="GDScript_1iv7c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ytof"]
+atlas = ExtResource("1_70u1i")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5duv"]
+atlas = ExtResource("1_70u1i")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds55w"]
+atlas = ExtResource("1_70u1i")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7jlj"]
+atlas = ExtResource("1_70u1i")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mweuh"]
+atlas = ExtResource("2_s3gs4")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pui4"]
+atlas = ExtResource("2_s3gs4")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72qv4"]
+atlas = ExtResource("2_s3gs4")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecou4"]
+atlas = ExtResource("2_s3gs4")
+region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tovgn"]
 atlas = ExtResource("1_70u1i")
@@ -55,6 +87,40 @@ region = Rect2(96, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4vfho"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ytof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5duv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds55w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7jlj")
+}],
+"loop": true,
+"name": &"eatleft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mweuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pui4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72qv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecou4")
+}],
+"loop": true,
+"name": &"eatright",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tovgn")
@@ -117,7 +183,7 @@ script = SubResource("GDScript_1iv7c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4vfho")
-animation = &"walkright"
+animation = &"eatright"
 autoplay = "idle"
 script = SubResource("GDScript_dpo4j")
 
